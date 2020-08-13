@@ -7,6 +7,7 @@ import * as errorRoutes from './server/utils/error';
 import {connect} from './db/dbConnection';
 import apiRoutes from './server/index.route';
 import {brokerConnect} from './broker/brokerConnection';
+import {initializeDeviceManger} from './broker/deviceManager';
 
 env.config();
 const PORT = process.env.PORT || 8000;
@@ -14,6 +15,8 @@ const app = express();
 
 connect()
 brokerConnect()
+initializeDeviceManger()
+
 app.use(
     express.urlencoded({
         extended:true,
