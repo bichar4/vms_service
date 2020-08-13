@@ -1,5 +1,7 @@
 var mqtt = require("mqtt");
 import {REGISTER_DEVICE} from '../utils /topic-constants';
+import {addNewDevice} from '../server/device/services/device.service';
+
 export const initializeDeviceManger = () => {
   var client = mqtt.connect("mqtt://localhost");
 
@@ -12,7 +14,11 @@ export const initializeDeviceManger = () => {
       case REGISTER_DEVICE:
         console.log("device registration request recieved");
         var context = JSON.parse(message.toString());
-        console.log(context.deviceID);
+        try {
+            addNewDevice(context)
+        }catch(err){
+            console.log(err)
+        }
         break;
     }
   });
