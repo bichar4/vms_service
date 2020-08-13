@@ -48,6 +48,12 @@ export async function createDevice(deviceData){
 
 export async function findDeviceById(id){
     return DeviceModel.findOne({_id:id}).catch((err)=>{
-        throw errl
+        throw err
+    })
+}
+
+export async function deleteDevice(id){
+    return DeviceModel.findByIdAndDelete(id).catch((err)=>{
+        throw err
     })
 }

@@ -1,7 +1,10 @@
-import {Router} from 'express';
+import Device,{findAllDevice,findDeviceById,createDevice,deleteDevice}from '../models/device.model';
 
-const router = Router();
-router.route('/health-check').get((req,res,next)=>{
-    res.json({message:'health ok'})})
- 
-export default router;
+export const getAllDevices = async function(){
+    const response = await findAllDevice();
+    return response;
+}
+
+export const addNewDevice = async function(device){
+    console.log(device)
+}
