@@ -1,6 +1,10 @@
 import { Schema, model as Model } from "mongoose";
 
 const deviceSchema = new Schema({
+  _id:{
+    type:String,
+    required:true
+  },
   isRegistered: {
     type: Boolean,
     default: false,

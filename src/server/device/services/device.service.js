@@ -5,6 +5,14 @@ import Device, {
   deleteAllDevice,
 } from "../models/device.model";
 
+export const checkDuplicate = async function (id) {
+  const response = await findDeviceById(id);
+  if (response) {
+    throw new Error("The device with given registration id already exists");
+  }
+  return true;
+};
+
 export const getAllDevices = async function () {
   const response = await findAllDevice();
   return response;
@@ -12,13 +20,14 @@ export const getAllDevices = async function () {
 
 export const addNewDevice = async function (device) {
   try {
+    await checkDuplicate(device._id);
     const createdDevice = await createDevice(device);
     return {
       message: "Device was created",
       payload: createdDevice,
     };
   } catch (err) {
-    throw new Error("Device couldnot be created");
+    throw new Error(err);
   }
 };
 
