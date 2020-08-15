@@ -7,6 +7,7 @@ router.route('/health-check').get((req,res,next)=>{
 
 router.get('/',deviceController.getAllDevices)
 router.post('/',deviceController.addNewDevice)
+router.delete('/',deviceController.deleteAllDevice)
 
 
 export default router;

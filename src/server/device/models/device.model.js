@@ -57,3 +57,10 @@ export async function deleteDevice(id){
         throw err
     })
 }
+
+export async function deleteAllDevice(){
+  return DeviceModel.remove({}).catch((err)=>{
+    throw err
+  })
+}
+
