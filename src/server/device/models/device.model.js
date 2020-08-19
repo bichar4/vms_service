@@ -27,7 +27,7 @@ const deviceSchema = new Schema({
   attributes: [
     {
       name: String,
-      type: String,
+      measurementType: String,
       unit: String 
     },
   ],

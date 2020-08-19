@@ -29,7 +29,7 @@ export const addNewDevice = async function (req, res, next) {
 export const deleteAllDevice = async function (req, res, next) {
   try {
     const response = await deviceServices.deleteAllDevices();
-    return res.status(httpStatus.OK), json(response);
+    return res.status(httpStatus.OK).json(response);
   } catch (err) {
     next({
       status: httpStatus.EXPECTATION_FAILED,
@@ -37,3 +37,18 @@ export const deleteAllDevice = async function (req, res, next) {
     });
   }
 };
+
+export const getReading = async function(req,res,next){
+  let query = req.params;
+  try{
+    const response = await deviceServices.getdeviceReadings(query);
+    return res.status(httpStatus.OK).json(response)
+  }
+  catch (err) {
+    next({
+      status: httpStatus.EXPECTATION_FAILED,
+      messge: err.message,
+    });
+  }
+}
+

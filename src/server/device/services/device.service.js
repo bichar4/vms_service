@@ -4,6 +4,10 @@ import Device, {
   createDevice,
   deleteAllDevice,
 } from "../models/device.model";
+import {REGISTER_DEVICE,TEST} from '../../../utils/topic-constants';
+var mqtt = require("mqtt");
+var client = mqtt.connect("mqtt://localhost");
+
 
 export const checkDuplicate = async function (id) {
   const response = await findDeviceById(id);
@@ -41,3 +45,10 @@ export const deleteAllDevices = async function () {
     throw new Error("Devices couldnot be deleted");
   }
 };
+
+export const getdeviceReadings = async function(query){
+  console.log(query)
+  client.publish(`/get/${deviceId}`)
+
+  
+}

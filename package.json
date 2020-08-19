@@ -21,7 +21,8 @@
     "mongoose": "^5.9.25",
     "morgan": "^1.10.0",
     "mosca": "^2.8.3",
-    "mqtt": "^4.1.0"
+    "mqtt": "^4.1.0",
+    "socket.io": "^2.3.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

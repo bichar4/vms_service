@@ -8,6 +8,7 @@ import {connect} from './db/dbConnection';
 import apiRoutes from './server/index.route';
 import {brokerConnect} from './broker/brokerConnection';
 import {initializeDeviceManger} from './broker/deviceManager';
+import socketApi from './server/socket/socket.api';
 
 env.config();
 const PORT = process.env.PORT || 8000;
@@ -31,10 +32,13 @@ app.use(errorRoutes.errorGeneral);
 app.use(errorRoutes.errorWithMessage);
 
 
-app.listen(PORT, (err, succ) => {
+let server = app.listen(PORT, (err, succ) => {
     if (!err) {
       console.log(`server is up and running at ${PORT}`);
     } else {
       console.log('server could not be started');
     }
   }); 
+
+let io = socketApi.socketApi.io;
+io.attach(server)

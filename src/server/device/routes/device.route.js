@@ -9,5 +9,7 @@ router.get('/',deviceController.getAllDevices)
 router.post('/',deviceController.addNewDevice)
 router.delete('/',deviceController.deleteAllDevice)
 
+router.get('/reading/:deviceId/:attributes?',deviceController.getReading)
+
 
 export default router;
